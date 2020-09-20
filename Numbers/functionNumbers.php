@@ -78,7 +78,7 @@ function tableShow($numbersArr) {
     return $value;
 }
 
-function makeWinTicket(array $arrNumbers,array $value=[], int $win = 0) {
+function makeWinTicket(array $arrNumbers,int $win ) {
   
     $counter = 0;
     for ($i = 1; $i <= 99; $i++) {
@@ -106,8 +106,55 @@ function makeWinTicket(array $arrNumbers,array $value=[], int $win = 0) {
         
     } else if ($win == 2) {
         
+    //
+        foreach ($arrNumbers as $integer) {
+            array_splice($arrFree, array_search($integer, $arrFree), 1);
+        }
+        for ($i = 1; $i < 12; $i += 5) {
+            $new = $arrFree[rand(0, count($arrFree) - 1)];
+            array_splice($arrNumbers, $i, 1, $new);
+            array_splice($arrFree, array_search($new, $arrFree), 1);
+        }
+        $new = $arrFree[rand(0, count($arrFree) - 1)];
+            array_splice($arrNumbers, rand(13,15), 1, $new);
+            array_splice($arrFree, array_search($new, $arrFree), 1);
+            $new = $arrFree[rand(0, count($arrFree) - 1)];
+            array_splice($arrNumbers, rand(17,19), 1, $new);
+            array_splice($arrFree, array_search($new, $arrFree), 1);
+            
+            for($u=0;$u<12;$u++){
+                $arrNumbers[]=$arrFree[rand(0, count($arrFree)-1)];
+            }
+            
+            return $arrNumbers;
+        
         
     } else if ($win == 8) {
+        
+        foreach ($arrNumbers as $integer) {
+            array_splice($arrFree, array_search($integer, $arrFree), 1);
+        }
+        
+        $new = $arrFree[rand(0, count($arrFree) - 1)];
+            array_splice($arrNumbers, 0, 1, $new);
+            array_splice($arrFree, array_search($new, $arrFree), 1);
+            
+            $new = $arrFree[rand(0, count($arrFree) - 1)];
+            array_splice($arrNumbers,6, 1, $new);
+            array_splice($arrFree, array_search($new, $arrFree), 1);
+            
+            $new = $arrFree[rand(0, count($arrFree) - 1)];
+            array_splice($arrNumbers,11, 1, $new);
+            array_splice($arrFree, array_search($new, $arrFree), 1);
+            
+            $new = $arrFree[rand(0, count($arrFree) - 1)];
+            array_splice($arrNumbers,18, 1, $new);
+            array_splice($arrFree, array_search($new, $arrFree), 1);
+            for($u=0;$u<12;$u++){
+                $arrNumbers[]=$arrFree[rand(0, count($arrFree)-1)];
+            }
+            
+            return $arrNumbers;
         
     } else if ($win == 20) {
         

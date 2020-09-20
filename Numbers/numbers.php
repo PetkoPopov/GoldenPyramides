@@ -65,7 +65,8 @@ if(!empty($_GET['dice'])){
     $_SESSION['numbers']= createNubers();
     $_SESSION['id']= uniqid();
     $_SESSION['count']=0;
-    $_SESSION['win_array']= makeWinTicket($_SESSION['numbers']);
+    ///////////////////////////
+    $_SESSION['win_array']= makeWinTicket($_SESSION['numbers'],8);
    
     tableShow($_SESSION['numbers']);
     
