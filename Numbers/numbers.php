@@ -2,17 +2,19 @@
  require_once './functionNumbers.php';
 ?>
 <form id="new_session" >
-    <button type="submit" value="new_session" name="new"><h1>NEW GAME</h1></button>
+    <input type="number" name="worth" style="width:100px;height: 44"/>
+    <button type="submit" value="new_session" name="new"><h1>Generate new ticket</h1></button>
 </form>
 <?php
 if(!empty($_GET['new'])){
     session_destroy();
     session_start();
+    require_once './requirments.php';
 }?>
 <title>generate numbers</title>
 
 <style>
-    h2{
+    p{
         background-color: brown
     }
     h3{
@@ -29,10 +31,7 @@ if(!empty($_GET['new'])){
 
 <?php
 if(isset($_SESSION['start'])){
-    //tableShow($_SESSION['numbers']);
-    ?>
-
-<?php
+    
 if(!empty($_GET['dice'])){
     $_SESSION['count']++;
     if(32-$_SESSION['count']>=0){
@@ -46,13 +45,21 @@ if(!empty($_GET['dice'])){
             echo'<h3>your number is <center>'.$change.'</center> </h3>';
             echo '<center><h4> '.$leftClicks.'                     clicks left </h4></center>';
        }else{
-            echo'<h2>your number is not  in matrix <center>'.$change.'</center> </h2>';
+            echo'<p >your number is not  in matrix <center>'.$change.'</center> </p>';
             echo '<center><h4>'.$leftClicks.'                 clicks left</h4></center>';
        }
        
-      
+       ?><div style="background-color: darkkhaki"><?php
+      if($_SESSION['count']==1){
+          $_SESSION['print']=$_SESSION['win_array'];
+      }
+      echo "<table border=1><tr><td><h4>числата които са покрити с фолио и които определят печалбата<h4></td>";
+       foreach($_SESSION['print'] as $numm){
+       echo '<td>'.$numm.'</td>';
+       }
+           echo '</tr><table>';
        tableShow($_SESSION['numbers']);
-        
+       ?></div><?php
       
     }else{
         echo"<h1><mark>you have not move any more pls press NEW GAME</mark></h>";
@@ -66,7 +73,7 @@ if(!empty($_GET['dice'])){
     $_SESSION['id']= uniqid();
     $_SESSION['count']=0;
     ///////////////////////////
-    $_SESSION['win_array']= makeWinTicket($_SESSION['numbers'],8);
+    $_SESSION['win_array']= makeWinTicket($_SESSION['numbers'],$_GET['worth']);
    
     tableShow($_SESSION['numbers']);
     

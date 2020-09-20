@@ -150,6 +150,11 @@ function makeWinTicket(array $arrNumbers,int $win ) {
             $new = $arrFree[rand(0, count($arrFree) - 1)];
             array_splice($arrNumbers,18, 1, $new);
             array_splice($arrFree, array_search($new, $arrFree), 1);
+            
+            $new = $arrFree[rand(0, count($arrFree) - 1)];
+            array_splice($arrNumbers,rand(14,15), 1, $new);
+            array_splice($arrFree, array_search($new, $arrFree), 1);
+            
             for($u=0;$u<12;$u++){
                 $arrNumbers[]=$arrFree[rand(0, count($arrFree)-1)];
             }
