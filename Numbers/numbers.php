@@ -22,6 +22,8 @@ require_once './makeNewTicket.php';
         
     </select>
     <button type="submit" value="new_session" name="new"><h1>Generate new ticket</h1></button>
+    <a href='../image/takePic.php'><h1>select pic for final :P</h1></a>
+    <a href='../image/image.php'><h1>add new pic for more fun :)</h1></a>
 </form>
 <?php
 if (!empty($_GET['new'])) {
@@ -29,6 +31,9 @@ if (!empty($_GET['new'])) {
     session_start();
     require_once './requirments.php';
     require_once './checkForWin.php';
+    
+    $_SESSION['image']= file_get_contents('../image/picForWin.php');
+    
 }
 ?>
 <title>generate numbers</title>
@@ -46,7 +51,7 @@ if (!empty($_GET['new'])) {
 
     <?php
     if (isset($_SESSION['start'])) {
-
+echo "<center>";
         if (!empty($_GET['dice'])) {
             $_SESSION['count']++;
             if (32 - $_SESSION['count'] >= 0) {
@@ -69,8 +74,18 @@ if (!empty($_GET['new'])) {
                 
                 tableShow($_SESSION['numbers']);
                            } else {
-                echo"<h1><marquee><mark>you have not move any more pls press NEW GAME</mark></marquee></h1>";
+//                echo"<h1><marquee><mark>you have not move any more pls press NEW GAME</mark></marquee></h1>";
+//            require '../image/';
+                
+                     $picPath='../image/'.$_SESSION['image'];                  
+                                ?>
+    
+    <img src="<?=$picPath?>" height="200" width="400" alt="don't worry"/>
+              
+              <?php
+              
             }
+            echo "</center>";
         }
     } else {
         $_SESSION['start'] = "session is started";

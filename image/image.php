@@ -1,10 +1,11 @@
+<?php session_start();?>
 <body bgcolor="olive">
     <form enctype="multipart/form-data" method="post">
         <div><input type="file" name="img" style="width: 255px;height: 44px"/>
 
         </div>
         <input type="submit" style="width: 155px;height: 44px"/>
-
+        <a href='../Numbers/numbers.php'><h1>go to the ticket game </h1></a>
 
     </form>
 
@@ -25,6 +26,7 @@
         }else{
         $arr= explode("_",$qwerty);
         rsort($arr);
+        
         $newImageNumber=intval($arr[0])+1;
         }
         
@@ -42,10 +44,11 @@
     }else{
         echo "<h1>select image</h1>";
         }
+        $_SESSION['arrPics']=rsort($arr);
     foreach($arr as $a){
             
               ?>
-    <img src="<?=$a?>" height="100" width="200"/>
+    <img src="<?=$a?>" height="150" width="200"/>
               
               <?php
             }

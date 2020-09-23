@@ -5,9 +5,9 @@
 //                        $_SESSION['print'][]=$change;
                     }
                     $color="darkkhaki";
-                    echo "<table border=1  ><tr ><td style='width:166px; height:88px;background-color:darkkhaki'>числата които са покрити с фолио и които определят печалбата</td>";
+                    echo "<table border=1  ><tr ><td style='background-color:darkkhaki'>числата които са покрити с фолио и които определят печалбата</td>";
                     foreach ($_SESSION['print'] as $numm) {
-                        echo "<td style='width:166px; height:88px;background-color:darkkhaki'><center>" . $numm . '</center></td>';
+                        echo "<td style='background-color:darkkhaki'><center>" . $numm . '</center></td>';
                     }
                     echo '</tr><table>';
                    
