@@ -29,19 +29,16 @@ if (!empty($_GET['new'])) {
     <?php
     if (isset($_SESSION['start'])) {
 echo "<center>";
-    if(isset($_POST)){
-require_once './showNumbersForCleaning.php';
+
+        if (!empty($_GET['dice'])) {
             $_SESSION['count']++;
             if (32 - $_SESSION['count'] >= 0) {
                 $leftClicks = 32 - $_SESSION['count'];
-//                $key = rand(0, count($_SESSION['win_array']) - 1);
-                $key= array_search($_POST['clean'],$_SESSION['win_array'] );
+                $key = rand(0, count($_SESSION['win_array']) - 1);
                 $change = $_SESSION['win_array'][$key];
                 $chng = $change . '*';
 
-                if(in_array($change, $_SESSION['print'])){
-                    array_splice($_SESSION['print'], array_search($change, $_SESSION['print']),1,$chng);
-                }
+                require_once './showNumbersForCleaning.php';
 
                 array_splice($_SESSION['win_array'], $key, 1);
                 if (in_array($change, $_SESSION['numbers'])) {

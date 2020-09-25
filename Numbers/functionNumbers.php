@@ -26,10 +26,10 @@ function tableShow($numbersArr) {
         $counter++;
         $checkForStar = str_split($numbers);
         if (in_array("*", $checkForStar)) {
-            $td .= "<td bgcolor=red><input type=submit value=$numbers style=width:99px;height:44px;background-color:green;></td>";
+            $td .= "<td bgcolor=red style=width:99px;height:44px;background-color:green;>$numbers </td>";
         } else {
             $tdValue[] = $numbers;
-            $td .= "<td><input type=submit value=$numbers style=width:99px;height:44px;background-color:lightgreen;></td>";
+            $td .= "<td style=width:99px;height:44px;background-color:lightgreen;>$numbers </td>";
         }
         if (($counter - 1) % 4 == 0) {
             $value['2'][] = $numbers;

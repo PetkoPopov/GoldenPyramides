@@ -262,6 +262,6 @@ $new = $arrFree[rand(0, count($arrFree) - 1)];
 
     }
 
-    return $winArr;
+//    return $winArr;
 }
 

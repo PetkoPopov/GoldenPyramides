@@ -5,10 +5,22 @@
 //                        $_SESSION['print'][]=$change;
                     }
                     $color="darkkhaki";
-                    echo "<table border=1  ><tr ><td style='background-color:darkkhaki'>числата които са покрити с фолио и които определят печалбата</td>";
+                    echo "<form method=post>";
+                    ?><table border=1  ><tr ><td style="background-color: darkkhaki">
+                                
+                    числата които са покрити с фолио и които определят печалбата
+                            </td>
+                            <?php
                     foreach ($_SESSION['print'] as $numm) {
-                        echo "<td style='background-color:darkkhaki'><center>" . $numm . '</center></td>';
+                        if(isset($numm[2])&&$numm[2]=="*"){
+                            ?><td style="background-color: darkkhaki"><center><button type="submit" value="<?=$numm?>" name="clean"><?=$numm ?></button></center></td>
+                    <?php
+                        }else{
+                            ?><td style="background-color: darkkhaki"><center><button type="submit" value="<?=$numm?>" name="clean">****</button></center></td>
+                    <?php
+                        }
+                        
                     }
-                    echo '</tr><table>';
+                    echo '</tr><table></form>';
                    
                     ?>
